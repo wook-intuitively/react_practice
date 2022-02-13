@@ -1,0 +1,24 @@
+.new-user__controls{
+    margin: 1rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.new-user__control {
+    
+}
+
+.new-user__control label {
+    font-size: 1.5rem;
+    display: flex;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.new-user__control input{
+    width: 20rem;
+    padding: 0.5rem;
+    max-width: 100%;
+    font-size:1.5rem;
+    margin-bottom: 1rem;
+}

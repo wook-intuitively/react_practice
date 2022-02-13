@@ -1,0 +1,14 @@
+.expense-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    background-color: #4b4b4b;
+    border: black solid 1px;
+}
+
+.expense-item__control label{
+    font-size: 1rem;
+    color: white;
+}
