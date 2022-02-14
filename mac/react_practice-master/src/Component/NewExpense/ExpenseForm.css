@@ -22,3 +22,12 @@
     font-size:1.5rem;
     margin-bottom: 1rem;
 }
+
+.new-user__control.invalid input{
+    border-color: red;
+    background: #ffd7d7;
+}
+
+.new-user__control.invalid label{
+    color: red;
+}

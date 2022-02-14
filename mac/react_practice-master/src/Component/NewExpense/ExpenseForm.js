@@ -7,7 +7,7 @@ const Button = styled.button`
     font: inherit;
     padding: 0.5rem;
     border: 1px solid #8b005d;
-    color: white;
+    color: black;
     cursor: pointer;
 
 &:focus {
@@ -22,12 +22,29 @@ const Button = styled.button`
 }
 `;
 
+const Label = styled.label`
+    font-size: 1.5rem;
+    display: flex;
+    color: black;
+    margin-bottom: 1rem;
+`;
+
+const Input = styled.input`
+    width: 20rem;
+    padding: 0.5rem;
+    max-width: 100%;
+    font-size:1.5rem;
+    margin-bottom: 1rem;
+    border-color: ${props => props.isvalid ? 'red' : 'black'};
+    
+`;
+
 const ExpenseForm = props => {
 
     const[enteredName,setEnteredName] = useState('');
     const[enteredAge, setEnteredAge] = useState('');
 
-    const[isValid,setIsValid] = useState(true);
+    const[isValid,setIsValid] = useState('true');
 
     const nameChangedHandler =(event) =>{
         setEnteredName(event.target.value);
@@ -40,9 +57,10 @@ const ExpenseForm = props => {
 
     const submitHanlder = event =>{
         event.preventDefault();
-        console.log(event);
-        if(event.trim().length === 0){
-            setIsValid(false);
+        console.log(enteredName.trim().length)
+        if(enteredName.trim().length === 0 || enteredAge.trim().length === 0)
+        {
+            setIsValid('false');
             return;
         }
 
@@ -51,25 +69,25 @@ const ExpenseForm = props => {
             name: enteredName,
             age: enteredAge,
         }
-
         props.onSaveUserData(userData);
 
         setEnteredName('');
         setEnteredAge('');
+        setIsValid('true');
     }
     return (
         <form onSubmit={submitHanlder}>
             <div className='new-user__controls'>
-                <div className='new-user__control'>
-                    <label>User Name</label>
-                    <input type='text' value={enteredName} onChange={nameChangedHandler}></input>
+                <div isvalid={isValid}>
+                    <Label>User Name</Label>
+                    <Input type='text' value={enteredName} onChange={nameChangedHandler}></Input>
                 </div>
                 <div className='new-user__control'>
                     <label>Age (Years)</label>
                     <input type='text' value={enteredAge} onChange={ageChangedHandler}></input>
                 </div>
                 <div className='new-user__control'>
-                    <button type='submit'>Add User</button>
+                    <Button type='submit'>Add User</Button>
                 </div>
             </div>
         </form>
